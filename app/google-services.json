@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "833851157980",
+    "firebase_url": "https://medical-app-bed80.firebaseio.com",
+    "project_id": "medical-app-bed80",
+    "storage_bucket": "medical-app-bed80.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:833851157980:android:ff017a73075532f1b8f319",
+        "android_client_info": {
+          "package_name": "com.example.medicalapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "833851157980-6974aknfjs7rmes26crk0huv3u9vrjpq.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.medicalapp",
+            "certificate_hash": "8545690216fb180d72c05c2a63354093a3eb7abe"
+          }
+        },
+        {
+          "client_id": "833851157980-oo0ncalu6ajon1id6llht067vhonc8cj.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBe_jkrZQFGIRb_93EvwdHAaiWbhjqmGoU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "833851157980-oo0ncalu6ajon1id6llht067vhonc8cj.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
