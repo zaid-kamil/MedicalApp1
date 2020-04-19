@@ -7,7 +7,6 @@ import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -24,9 +23,10 @@ public class EmailActivity extends AppCompatActivity {
     String subject;
     String message;
     String attachmentFile;
-    Uri URI = null;
+    Uri imageUri = null;
     private static final int PICK_FROM_GALLERY = 101;
     int columnIndex;
+    private Uri selectedImage;
 
 
     @Override
@@ -40,6 +40,9 @@ public class EmailActivity extends AppCompatActivity {
         et_message = findViewById(R.id.et_message);
         Attachment = findViewById(R.id.bt_attachment);
         Send = findViewById(R.id.bt_send);
+        if (getIntent() != null) {
+            updateUI();
+        }
         //send button listener
         Send.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -55,44 +58,34 @@ public class EmailActivity extends AppCompatActivity {
             }
         });
     }
+
+    private void updateUI() {
+        String pEmail = getIntent().getStringExtra("email");
+        String pName = getIntent().getStringExtra("name");
+        et_email.setText(pEmail);
+        et_subject.setText("QR image of " + pName + " patient");
+        et_message.setText("Please check the details of the patient given in QR image.");
+    }
+
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == PICK_FROM_GALLERY && resultCode == RESULT_OK) {
-            Uri selectedImage = data.getData();
-            String[] filePathColumn = {MediaStore.Images.Media.DATA};
-            Cursor cursor = getContentResolver().query(selectedImage, filePathColumn, null, null, null);
-            cursor.moveToFirst();
-            columnIndex = cursor.getColumnIndex(filePathColumn[0]);
-            attachmentFile = cursor.getString(columnIndex);
-            Log.e("Attachment Path:", attachmentFile);
-            URI = Uri.parse("file://" + attachmentFile);
-            cursor.close();
+            selectedImage = data.getData();
         }
     }
-    public void sendEmail()
-    {
-        try
-        {
+
+    public void sendEmail() {
+        try {
             email = et_email.getText().toString();
             subject = et_subject.getText().toString();
             message = et_message.getText().toString();
-            final Intent emailIntent = new Intent(android.content.Intent.ACTION_SEND);
-            emailIntent.setType("plain/text");
-            emailIntent.putExtra(android.content.Intent.EXTRA_EMAIL,new String[] { email });
-            emailIntent.putExtra(android.content.Intent.EXTRA_SUBJECT,subject);
-            if (URI != null) {
-                emailIntent.putExtra(Intent.EXTRA_STREAM, URI);
-            }
-            emailIntent.putExtra(android.content.Intent.EXTRA_TEXT, message);
-            this.startActivity(Intent.createChooser(emailIntent,"Sending email..."));
-        }
-        catch (Throwable t)
-        {
-            Toast.makeText(this, "Request failed try again: " + t.toString(),Toast.LENGTH_LONG).show();
+            composeEmail(new String[]{email}, subject, selectedImage);
+        } catch (Throwable t) {
+            Toast.makeText(this, "Request failed try again: " + t.toString(), Toast.LENGTH_LONG).show();
         }
     }
-    public void openFolder()
-    {
+
+    public void openFolder() {
         Intent intent = new Intent();
         intent.setType("image/*");
         intent.setAction(Intent.ACTION_GET_CONTENT);
@@ -100,5 +93,15 @@ public class EmailActivity extends AppCompatActivity {
         startActivityForResult(Intent.createChooser(intent, "Complete action using"), PICK_FROM_GALLERY);
     }
 
+    public void composeEmail(String[] addresses, String subject, Uri attachment) {
+        Intent intent = new Intent(Intent.ACTION_SEND);
+        intent.setType("*/*");
+        intent.putExtra(Intent.EXTRA_EMAIL, addresses);
+        intent.putExtra(Intent.EXTRA_SUBJECT, subject);
+        intent.putExtra(Intent.EXTRA_STREAM, attachment);
+        if (intent.resolveActivity(getPackageManager()) != null) {
+            startActivity(intent);
+        }
+    }
 }
 

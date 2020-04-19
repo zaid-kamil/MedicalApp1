@@ -4,72 +4,60 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/image2"
+    android:background="@drawable/image"
+    android:backgroundTint="#673319"
+    android:backgroundTintMode="add"
     android:orientation="vertical"
     tools:context=".PatientActivity">
 
 
     <TextView
         android:id="@+id/textInfo"
-        android:layout_width="411dp"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:padding="25sp"
+        android:background="#3F51B5"
         android:text="PATIENT DETAIL"
         android:textAlignment="center"
         android:textAppearance="@style/TextAppearance.AppCompat.Display1"
-        android:textColor="#040937"
-        android:textSize="24sp"
+        android:textColor="#FFFFFF"
+
         android:textStyle="bold"
-        tools:layout_editor_absoluteY="32dp" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
         android:id="@+id/editName"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="17dp"
         android:layout_marginEnd="32dp"
+        android:background="@drawable/common_google_signin_btn_text_light_normal_background"
         android:ems="10"
         android:hint="Patient Name"
         android:inputType="textPersonName"
         android:padding="15sp"
         android:textAlignment="viewStart"
         android:textColorHint="#201E1E"
-        android:textSize="18sp"
+        android:textSize="14sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textInfo" />
-
-    <EditText
-        android:id="@+id/pEmail"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="12dp"
-        android:layout_marginEnd="32dp"
-        android:ems="10"
-        android:hint="Patient Email"
-        android:inputType="textPersonName"
-        android:padding="15sp"
-        android:textAlignment="viewStart"
-        android:textColorHint="#0E0E0E"
-        android:textSize="18sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editName" />
 
     <EditText
         android:id="@+id/editAge"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
-        android:layout_marginTop="12dp"
         android:layout_marginEnd="32dp"
+        android:background="@drawable/common_google_signin_btn_text_light_normal_background"
         android:ems="10"
         android:hint="Age"
         android:inputType="number"
         android:padding="15sp"
         android:textColorHint="#0C0C0C"
+        android:textSize="14sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/pEmail" />
@@ -79,13 +67,14 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
-        android:layout_marginTop="12dp"
         android:layout_marginEnd="32dp"
+        android:background="@drawable/common_google_signin_btn_text_light_normal_background"
         android:ems="10"
         android:hint="Height"
         android:inputType="number"
         android:padding="15sp"
         android:textColorHint="#131313"
+        android:textSize="14sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editAge" />
@@ -95,27 +84,60 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
-        android:layout_marginTop="12dp"
         android:layout_marginEnd="32dp"
+        android:background="@drawable/common_google_signin_btn_text_light_normal_background"
         android:ems="10"
         android:hint="Address"
         android:inputType="textPersonName"
         android:padding="15sp"
         android:textColorHint="#101010"
+        android:textSize="14sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editHeight" />
+
+    <EditText
+        android:id="@+id/editReason"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginEnd="32dp"
+        android:background="@drawable/common_google_signin_btn_text_light_normal_background"
+        android:ems="10"
+        android:hint="Reason to see the Doctor"
+        android:inputType="textPersonName"
+        android:padding="15sp"
+        android:textColorHint="#151515"
+        android:textSize="14sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editAddress" />
+
+    <EditText
+        android:id="@+id/pEmail"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginEnd="32dp"
+        android:background="@drawable/common_google_signin_btn_text_light_normal_background"
+        android:ems="10"
+        android:hint="Patient Email"
+        android:inputType="textPersonName"
+        android:padding="15sp"
+        android:textAlignment="viewStart"
+        android:textColorHint="#0E0E0E"
+        android:textSize="14sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editName" />
 
     <Button
         android:id="@+id/btnSubmit"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="40dp"
-        android:layout_marginEnd="40dp"
-        android:layout_marginBottom="16dp"
-        android:backgroundTint="#6AA1F8"
-        android:padding="20sp"
-        android:text="SUBMIT"
+        android:background="#FA1B1B"
+
+        android:text="generate QR"
         android:textColor="#101010"
         android:textSize="18sp"
         android:textStyle="bold"
@@ -123,21 +145,19 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
-    <EditText
-        android:id="@+id/editReason"
+    <ImageView
+        android:id="@+id/imgQR"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="12dp"
-        android:layout_marginEnd="32dp"
-        android:ems="10"
-        android:hint="Reason to see the Doctor"
-        android:inputType="textPersonName"
-        android:padding="15sp"
-        android:textColorHint="#151515"
+        android:layout_height="0dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+        android:adjustViewBounds="true"
+        android:cropToPadding="true"
+        app:layout_constraintBottom_toTopOf="@+id/btnSubmit"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editAddress" />
+        app:layout_constraintTop_toBottomOf="@+id/editReason"
+        app:srcCompat="@drawable/image5" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
