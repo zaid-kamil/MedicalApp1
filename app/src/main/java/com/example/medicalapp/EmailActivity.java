@@ -35,11 +35,11 @@ public class EmailActivity extends AppCompatActivity {
         setContentView(R.layout.activity_email);
 
 
-        et_email = (EditText) findViewById(R.id.et_to);
-        et_subject = (EditText) findViewById(R.id.et_subject);
-        et_message = (EditText) findViewById(R.id.et_message);
-        Attachment = (Button) findViewById(R.id.bt_attachment);
-        Send = (Button) findViewById(R.id.bt_send);
+        et_email = findViewById(R.id.et_to);
+        et_subject = findViewById(R.id.et_subject);
+        et_message = findViewById(R.id.et_message);
+        Attachment = findViewById(R.id.bt_attachment);
+        Send = findViewById(R.id.bt_send);
         //send button listener
         Send.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -55,12 +55,12 @@ public class EmailActivity extends AppCompatActivity {
             }
         });
     }
-    protected void onActivityResult(int requestCode, int resultCode, Intent data)
-    {
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == PICK_FROM_GALLERY && resultCode == RESULT_OK) {
             Uri selectedImage = data.getData();
-            String[] filePathColumn = { MediaStore.Images.Media.DATA };
-            Cursor cursor = getContentResolver().query(selectedImage,filePathColumn, null, null, null);
+            String[] filePathColumn = {MediaStore.Images.Media.DATA};
+            Cursor cursor = getContentResolver().query(selectedImage, filePathColumn, null, null, null);
             cursor.moveToFirst();
             columnIndex = cursor.getColumnIndex(filePathColumn[0]);
             attachmentFile = cursor.getString(columnIndex);

@@ -4,146 +4,135 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/image"
+    android:backgroundTint="#4D72D3"
+    android:backgroundTintMode="add"
     android:orientation="vertical"
     tools:context=".ProfileActivity">
 
     <ImageView
-        android:id="@+id/imageView4"
-        android:layout_width="411dp"
-        android:layout_height="731dp"
-        android:scaleType="centerCrop"
-        android:src="@drawable/image2"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.483"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.9" />
-
-    <ImageView
         android:id="@+id/imageView5"
-        android:layout_width="176dp"
-        android:layout_height="141dp"
+        android:layout_width="0dp"
+        android:layout_height="100dp"
+        android:layout_marginStart="118dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="117dp"
+        android:adjustViewBounds="true"
+        android:cropToPadding="true"
         android:src="@drawable/image4"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/imageView4"
-        app:layout_constraintVertical_bias="0.18" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/textLogout"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="40dp"
-        android:layout_marginEnd="40dp"
+        android:layout_marginBottom="9dp"
         android:padding="10sp"
         android:paddingBottom="15sp"
         android:text="change user? logout"
+        android:textAlignment="center"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
-        android:textSize="18sp"
+        android:textSize="14sp"
         android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/btnSkip"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnSubmit" />
+        app:layout_constraintStart_toEndOf="@+id/btnSkip" />
 
     <EditText
         android:id="@+id/editName"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="30dp"
+        android:layout_marginTop="16dp"
         android:layout_marginEnd="30dp"
         android:ems="10"
         android:hint="NAME"
-        android:padding="15sp"
         android:inputType="textPersonName"
+        android:padding="15sp"
         android:textColor="#F80B0A0A"
         android:textColorHint="#151414"
         android:textSize="18sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView5"
-        app:layout_constraintVertical_bias="0.01999998" />
+        app:layout_constraintTop_toBottomOf="@+id/imageView5" />
 
     <EditText
         android:id="@+id/editSpeciality"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="30dp"
+        android:layout_marginTop="8dp"
         android:layout_marginEnd="30dp"
+        android:autofillHints=""
         android:ems="10"
         android:hint="SPECIALITY"
         android:inputType="textPersonName"
         android:padding="15sp"
         android:textColor="#232222"
         android:textColorHint="#0B0A0A"
-        android:textStyle="bold"
         android:textSize="18sp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editAddress" />
 
     <Button
         android:id="@+id/btnSubmit"
-        android:layout_width="0dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="40dp"
-        android:layout_marginTop="50dp"
-        android:layout_marginEnd="40dp"
         android:backgroundTint="#00B8D4"
         android:padding="15sp"
-        android:text="SUBMIT"
-        android:textColor="#171717"
-        android:textSize="24sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editQualification" />
+        android:text="update profile"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <EditText
         android:id="@+id/editQualification"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="30dp"
+        android:layout_marginTop="8dp"
         android:layout_marginEnd="30dp"
         android:ems="10"
         android:hint="QUALIFICATION"
-        android:padding="15sp"
         android:inputType="textPersonName"
+        android:padding="15sp"
         android:textColor="#100F0F"
         android:textColorHint="#151414"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.481"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/radioGroup" />
+        app:layout_constraintTop_toBottomOf="@+id/genderOption" />
 
     <RadioGroup
-        android:id="@+id/radioGroup"
+        android:id="@+id/genderOption"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="30dp"
+        android:layout_marginTop="8dp"
+
         android:layout_marginEnd="30dp"
-        android:accessibilityHeading="false"
         android:orientation="horizontal"
         android:padding="10sp"
-
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textGender">
 
         <RadioButton
-            android:id="@+id/radioButton"
+            android:id="@+id/male"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:checked="true"
             android:text="MALE"
             android:textColor="#F70E0E0E"
             android:textStyle="bold" />
 
         <RadioButton
-            android:id="@+id/radioButton2"
+            android:id="@+id/female"
             android:layout_width="89dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -158,6 +147,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="30dp"
+        android:layout_marginTop="8dp"
         android:layout_marginEnd="30dp"
         android:ems="10"
         android:hint="ADDRESS"
@@ -176,17 +166,22 @@
         android:id="@+id/textGender"
         android:layout_width="93dp"
         android:layout_height="34dp"
-        android:layout_marginStart="30dp"
-        android:layout_marginTop="6dp"
+        android:layout_marginTop="8dp"
         android:text="GENDER"
         android:textAlignment="center"
         android:textAppearance="@style/TextAppearance.AppCompat.Display1"
         android:textColor="#1B1919"
         android:textSize="18sp"
         android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/editSpeciality"
         app:layout_constraintTop_toBottomOf="@+id/editSpeciality" />
+
+    <Button
+        android:id="@+id/btnSkip"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="skip"
+        app:layout_constraintBottom_toBottomOf="@+id/btnSubmit"
+        app:layout_constraintStart_toEndOf="@+id/btnSubmit" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

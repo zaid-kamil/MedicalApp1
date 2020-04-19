@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:dist="http://schemas.android.com/apk/distribution"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.example.medicalapp">
+
+    <uses-sdk tools:overrideLibrary="com.google.zxing.client.android" />
 
     <dist:module dist:instant="true" />
 
@@ -12,7 +15,8 @@
         android:roundIcon="@mipmap/ic_app_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ScanningActivity"></activity>
+        <activity android:name=".WelcomeActivity"></activity>
+        <activity android:name=".ScanningActivity" />
         <activity android:name=".SignUpActivity" />
         <activity android:name=".EmailActivity" />
         <activity android:name=".ScannerActivity" />
