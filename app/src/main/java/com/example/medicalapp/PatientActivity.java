@@ -14,6 +14,8 @@ import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
 import android.provider.MediaStore;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -45,8 +47,7 @@ public class PatientActivity extends AppCompatActivity implements EasyPermission
     private ImageView imgQr;
     private String[] permissions = new String[]{
             Manifest.permission.READ_EXTERNAL_STORAGE,
-            Manifest.permission.WRITE_EXTERNAL_STORAGE,
-            Manifest.permission.CAMERA,
+            Manifest.permission.WRITE_EXTERNAL_STORAGE
     };
     private Button btnSubmit;
 
@@ -107,10 +108,10 @@ public class PatientActivity extends AppCompatActivity implements EasyPermission
                 if (counter == 1) {
                     String email = pEmail.getText().toString().trim().toLowerCase();
                     String name = editName.getText().toString().trim().toLowerCase();
-                    String age = editAge.toString().trim().toLowerCase();
-                    String Height = editHeight.toString().trim().toLowerCase();
+                    String age = editAge.getText().toString().trim().toLowerCase();
+                    String Height = editHeight.getText().toString().trim().toLowerCase();
                     String address = editAddress.getText().toString().trim().toLowerCase();
-                    String reason = editReason.toString().trim().toLowerCase();
+                    String reason = editReason.getText().toString().trim().toLowerCase();
                     String qrData = "MEDICAL DETAIL\nfrom app\nfrom doctor" + FirebaseAuth.getInstance().getCurrentUser().getDisplayName() + "\nPATIENT DETAILS\nEMAIL - " + email + "\nNAME - " + name + "\nAGE - " + age + "\nHEIGHT - " + Height + "\nADDRESS - " + address + "\nREASON - " + reason;
                     generateQR(qrData);
                     counter = 2;
@@ -231,5 +232,23 @@ public class PatientActivity extends AppCompatActivity implements EasyPermission
                 stream.close();
             }
         }
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_patient, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.action_logout:
+                FirebaseAuth auth = FirebaseAuth.getInstance();
+                auth.signOut();
+                getSharedPreferences("usertype", Context.MODE_PRIVATE).edit().clear().apply();
+                finish();
+        }
+        return super.onOptionsItemSelected(item);
     }
 }

@@ -4,13 +4,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.example.medicalapp">
 
-    <uses-sdk tools:overrideLibrary="com.google.zxing.client.android" />
 
-    <dist:module dist:instant="true" />
 
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.CAMERA" />
+
 
     <application
         android:allowBackup="true"
