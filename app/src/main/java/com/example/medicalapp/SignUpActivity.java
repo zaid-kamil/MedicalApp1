@@ -3,6 +3,8 @@ package com.example.medicalapp;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
@@ -59,6 +61,31 @@ public class SignUpActivity extends AppCompatActivity {
         ArrayAdapter<String> typeadapter = new ArrayAdapter<>(SignUpActivity.this, android.R.layout.simple_list_item_1, option);
         typeadapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spn.setAdapter(typeadapter);
+        spn.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                if(position==2) {
+                    editLicense.animate().alpha(0).setDuration(200).setListener(new AnimatorListenerAdapter() {
+                        @Override
+                        public void onAnimationEnd(Animator animation) {
+                            editLicense.setVisibility(View.GONE);
+                        }
+                    }).start();
+                }else if(position == 1){
+                    editLicense.animate().alpha(1).setDuration(200).setListener(new AnimatorListenerAdapter() {
+                        @Override
+                        public void onAnimationEnd(Animator animation) {
+                            editLicense.setVisibility(View.VISIBLE);
+                        }
+                    }).start();
+                }
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
         btnSubmit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -127,7 +154,7 @@ public class SignUpActivity extends AppCompatActivity {
 
     private void updateUI(FirebaseUser user) {
         if (user != null) {
-            startActivity(new Intent(SignUpActivity.this, LoginActivity.class));
+            startActivity(new Intent(SignUpActivity.this, WelcomeActivity.class));
             finish();
         }
     }
